@@ -12,3 +12,44 @@
 - アイコン付きのぱっと見で分かる概念図
 - トレードオフとなる要素
 - 参考記事
+
+## ドキュメント
+
+- [WORKFLOW.md](./WORKFLOW.md) - サイト構成と記事追加ワークフロー
+
+## ディレクトリ構造
+
+```
+.github/
+  workflows/
+    deploy.yml              # GitHub Pages 自動デプロイ設定
+docs/
+  .vitepress/
+    categories.ts           # カテゴリ定義
+    config.mts              # VitePress 設定
+  [category]/
+    index.md                # カテゴリランディング（自動生成）
+    index.paths.ts          # 動的ルート生成
+  ai/                       # AI系記事
+  db/                       # DB系記事
+  index.md                  # ホームページ
+  new.md                    # 新着ページ
+.git/
+  hooks/
+    pre-commit              # カテゴリ登録チェック
+```
+
+## クイックスタート
+
+```bash
+# インストール
+npm install
+
+# 開発サーバー起動
+npm run docs:dev
+
+# ビルド
+npm run docs:build
+```
+
+詳細は [WORKFLOW.md](./WORKFLOW.md) を参照。
