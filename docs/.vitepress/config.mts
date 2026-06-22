@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { CATEGORIES } from './categories'
 
 export default defineConfig({
   title: 'IT Architect Document',
@@ -9,9 +10,16 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'ホーム', link: '/' },
+      ...CATEGORIES.map((c) => ({ text: c.label, link: `/${c.id}/` })),
+      { text: '新着', link: '/new' },
     ],
 
-    sidebar: [],
+    // カテゴリ自体を増やすときだけ categories.ts に1行追加すればここにも反映される。
+    // 記事(末端ファイル)を追加するだけならこのファイルを触る必要はない。
+    sidebar: [
+      ...CATEGORIES.map((c) => ({ text: c.label, link: `/${c.id}/` })),
+      { text: '新着', link: '/new' },
+    ],
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/akimotosophia/it-architect-document' },
