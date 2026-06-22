@@ -6,13 +6,17 @@ title: 新着
 
 <script setup>
 import { data as posts } from './new.data.ts'
+import { useData } from 'vitepress'
+const { site } = useData()
+
+const getUrl = (url) => site.value.base + url.replace(/^\//, '')
 </script>
 
 <ul class="new-list">
   <li v-for="post in posts" :key="post.url">
     <span class="new-date">{{ post.date }}</span>
     <span class="new-category">[{{ post.category }}]</span>
-    <a :href="post.url">{{ post.title }}</a>
+    <a :href="getUrl(post.url)">{{ post.title }}</a>
   </li>
 </ul>
 

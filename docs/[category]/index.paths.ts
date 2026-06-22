@@ -9,7 +9,9 @@ interface Article {
 }
 
 function parseFrontmatter(content: string): Record<string, any> {
-  const match = content.match(/^---\n([\s\S]*?)\n---/)
+  // Normalize line endings (handle both CRLF and LF)
+  const normalized = content.replace(/\r\n/g, '\n')
+  const match = normalized.match(/^---\n([\s\S]*?)\n---/)
   if (!match) return {}
   const fm = match[1]
   const result: Record<string, any> = {}

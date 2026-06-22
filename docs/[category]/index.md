@@ -4,7 +4,9 @@ title: '{{ $params.label }}'
 
 <script setup>
 import { useData } from 'vitepress'
-const { params } = useData()
+const { params, site } = useData()
+
+const getUrl = (url) => site.value.base + url.replace(/^\//, '')
 </script>
 
 # {{ params.label }}
@@ -12,7 +14,7 @@ const { params } = useData()
 <ul v-if="params.articles.length" class="category-list">
   <li v-for="article in params.articles" :key="article.url">
     <span class="category-date">{{ article.date }}</span>
-    <a :href="article.url">{{ article.title }}</a>
+    <a :href="getUrl(article.url)">{{ article.title }}</a>
   </li>
 </ul>
 <p v-else>準備中です。記事はまだありません。</p>
