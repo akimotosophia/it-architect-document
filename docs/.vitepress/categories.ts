@@ -6,4 +6,5 @@ export interface Category {
 export const CATEGORIES: Category[] = [
   { id: 'ai', label: 'AI系' },
   { id: 'db', label: 'DB系' },
+  { id: 'cicd', label: 'CI/CD系' },
 ]
